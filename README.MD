@@ -1,0 +1,1 @@
+Small python tool to generate google analytics cookies consent pop-up
