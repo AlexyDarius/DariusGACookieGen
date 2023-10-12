@@ -1,2 +1,2 @@
 #!/bin/bash
-python $(dirname $0)/src/main.py
+python3 $(dirname $0)/src/main.py
