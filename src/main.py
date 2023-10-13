@@ -11,6 +11,7 @@ def generate_files():
     main_domain = main_domain_entry.get()
     privacy_policy_url = privacy_policy_url_entry.get()
     main_message = main_message_entry.get()
+    ga_message = ga_message_entry.get()
     gatag_id = gatag_id_entry.get()
     gtmtag_id = gtmtag_id_entry.get()
     cookie_expiration = cookie_expiration_entry.get()
@@ -31,7 +32,7 @@ def generate_files():
         # Generate cookies.js
         generate_cookies_js(privacy_policy_url, main_message, gatag_id, cookie_expiration, directory_path)
         # Generate cookieConsentBar.js
-        generate_cookieConsentBar_js(main_domain, directory_path)
+        generate_cookieConsentBar_js(main_domain, ga_message, directory_path)
         # Generate gtagScript.js
         generate_gtagScript_js(gtmtag_id, directory_path)
         # Generate styles.css
@@ -84,10 +85,15 @@ privacy_policy_url_label.pack()
 privacy_policy_url_entry = tk.Entry(app)
 privacy_policy_url_entry.pack()
 
-main_message_label = tk.Label(app, text="Main Message (e.g. Google Analytics est utilisé pour capturer des informations\n générales anonymisées à propos de l'utilisation de cette page.) :")
+main_message_label = tk.Label(app, text="Main Message (e.g. Ce site utilise des cookies que vous pouvez paramétrer.) :")
 main_message_label.pack()
 main_message_entry = tk.Entry(app)
 main_message_entry.pack()
+
+ga_message_label = tk.Label(app, text="Main Message (e.g. Google Analytics est utilisé pour capturer des informations\n générales anonymisées à propos de l'utilisation de cette page.) :")
+ga_message_label.pack()
+ga_message_entry = tk.Entry(app)
+ga_message_entry.pack()
 
 gatag_id_label = tk.Label(app, text="Google Analytics Tag ID (e.g. G-L0C0D6YQ9K) :")
 gatag_id_label.pack()
