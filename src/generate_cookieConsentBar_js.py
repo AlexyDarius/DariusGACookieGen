@@ -458,7 +458,7 @@ def generate_cookieConsentBar_js(main_domain, ga_message, directory_path):
                         o.forEach(function (t) {{
                             if (t.info) {{
                                 var e = n("span");
-                                a(e, L.info), a(e, "mibreit_CookieConsent_Info"), (e.innerHTML = {ga_message});
+                                a(e, L.info), a(e, "mibreit_CookieConsent_Info"), (e.innerHTML = "{ga_message}");
                                 var o = !1;
                                 r.v.set(
                                     t.cookieName,
