@@ -38,7 +38,7 @@ def generate_files():
         # Generate styles.css
         generate_styles_css(bg_color, primary_color, directory_path)
         
-        result_label.config(text="cookie.php and cookies.js files have been generated.")
+        result_label.config(text="Cookie files have been generated.")
 
         print("\nCookie files well generated, don't forget to minify !")
         print("Read readme.txt for implementation.\n")
@@ -52,6 +52,18 @@ def select_directory():
     if directory_path:
         directory_var.set(directory_path)
 
+def main_message_autofill():
+    main_message_entry.delete("1.0", tk.END)
+    main_message_entry.insert(tk.END, "Ce site utilise des cookies que vous pouvez paramétrer.")
+
+def ga_message_autofill():
+    ga_message_entry.delete("1.0", tk.END)
+    ga_message_entry.insert(tk.END, "Google Analytics est utilisé pour capturer des informations générales anonymisées à propos de l'utilisation de cette page.")
+
+def cookie_expiration_autofill():
+    cookie_expiration_entry.delete(0, tk.END)
+    cookie_expiration_entry.insert(0, "2678400")
+
 def open_color_picker1():
     color = colorchooser.askcolor()[1]
     color_entry1.delete(0, tk.END)
@@ -63,13 +75,13 @@ def open_color_picker2():
     color_entry2.insert(0, color)
 
 app = tk.Tk()
-app.title("Cookie Generator")
+app.title("Darius GA Cookie Generator")
 
 directory_var = tk.StringVar()
 
 directory_label = tk.Label(app, text="Select Directory:")
 directory_label.pack()
-directory_entry = tk.Entry(app, textvariable=directory_var)
+directory_entry = tk.Entry(app, textvariable=directory_var, width = 50)
 directory_entry.pack()
 
 select_directory_button = tk.Button(app, text="Browse", command=select_directory)
@@ -87,12 +99,16 @@ privacy_policy_url_entry.pack()
 
 main_message_label = tk.Label(app, text="Main Message (e.g. Ce site utilise des cookies que vous pouvez paramétrer.) :")
 main_message_label.pack()
-main_message_entry = tk.Entry(app)
+main_message_entry = tk.Text(app, width=50, height=5)
+main_message_autofill_button = tk.Button(app, text="Autofill", command=main_message_autofill)
+main_message_autofill_button.pack()
 main_message_entry.pack()
 
 ga_message_label = tk.Label(app, text="Main Message (e.g. Google Analytics est utilisé pour capturer des informations\n générales anonymisées à propos de l'utilisation de cette page.) :")
 ga_message_label.pack()
-ga_message_entry = tk.Entry(app)
+ga_message_autofill_button = tk.Button(app, text="Autofill", command=ga_message_autofill)
+ga_message_autofill_button.pack()
+ga_message_entry = tk.Text(app, width=50, height=5)
 ga_message_entry.pack()
 
 gatag_id_label = tk.Label(app, text="Google Analytics Tag ID (e.g. G-L0C0D6YQ9K) :")
@@ -107,6 +123,8 @@ gtmtag_id_entry.pack()
 
 cookie_expiration_label = tk.Label(app, text="Cookie Expiration (seconds, 2678400 for 1 month):")
 cookie_expiration_label.pack()
+cookie_expiration_autofill_button = tk.Button(app, text="Autofill 1 month", command=cookie_expiration_autofill)
+cookie_expiration_autofill_button.pack()
 cookie_expiration_entry = tk.Entry(app)
 cookie_expiration_entry.pack()
 
