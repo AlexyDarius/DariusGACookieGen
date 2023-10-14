@@ -10,8 +10,8 @@ from generate_styles_css import generate_styles_css
 def generate_files():
     main_domain = main_domain_entry.get()
     privacy_policy_url = privacy_policy_url_entry.get()
-    main_message = main_message_entry.get()
-    ga_message = ga_message_entry.get()
+    main_message = main_message_entry.get("1.0", "end-1c")
+    ga_message = ga_message_entry.get("1.0", "end-1c")
     gatag_id = gatag_id_entry.get()
     gtmtag_id = gtmtag_id_entry.get()
     cookie_expiration = cookie_expiration_entry.get()
@@ -148,8 +148,8 @@ color_entry2.pack()
 color_picker_button = tk.Button(app, text="Or use color picker", command=open_color_picker2)
 color_picker_button.pack()
 
-blan_label = tk.Label(app, text="")
-blan_label.pack()
+blank_label = tk.Label(app, text="")
+blank_label.pack()
 
 generate_button = tk.Button(app, text="Generate", command=generate_files)
 generate_button.pack()
